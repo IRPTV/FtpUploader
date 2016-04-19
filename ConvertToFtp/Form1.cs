@@ -150,9 +150,9 @@ namespace ConvertToFtp
                 request.Method = WebRequestMethods.Ftp.MakeDirectory;
                 request.Credentials = new NetworkCredential(System.Configuration.ConfigurationSettings.AppSettings["UserName"].Trim(),
                     System.Configuration.ConfigurationSettings.AppSettings["PassWord"].Trim());
-                request.UsePassive = false;
+                request.UsePassive = true;
                 request.UseBinary = true;
-                request.KeepAlive = false;
+                request.KeepAlive = true;
                 using (var resp = (FtpWebResponse)request.GetResponse())
                 {
                     if (resp.StatusCode == FtpStatusCode.PathnameCreated)
@@ -699,9 +699,9 @@ namespace ConvertToFtp
                 ftpWebRequest.Method = WebRequestMethods.Ftp.UploadFile;
                 ftpWebRequest.Credentials = new NetworkCredential(System.Configuration.ConfigurationSettings.AppSettings["UserName"].Trim(),
                     System.Configuration.ConfigurationSettings.AppSettings["PassWord"].Trim());
-                ftpWebRequest.UsePassive = false;
+                ftpWebRequest.UsePassive = true;
                 ftpWebRequest.UseBinary = true;
-                ftpWebRequest.KeepAlive = false;
+                ftpWebRequest.KeepAlive = true;
                 //  ftpWebRequest. = 10000;
                 using (var inputStream = File.OpenRead(FilePath))
                 using (var outputStream = ftpWebRequest.GetRequestStream())
